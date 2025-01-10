@@ -8,7 +8,6 @@ import { FaShoppingCart } from "react-icons/fa";
 function producPage() {
  let {product , setproduct } = useContext(productContext);
    let {data , setData} = useContext(CartContext);
-  // console.log(data)
  let productid = useParams();
  let singleProduct = product.filter((item)=>{
      return item.id==productid.id
@@ -61,9 +60,9 @@ console.log(singleProduct)
        {
          singleProduct.map((item)=>{
               return <div>
-                     <div key={item.id} className=' inline-block ml-5 h-[650px] w-[80%] m-auto my-7   border-2 border-gray-800 dark:bg-gray-300 text-black  sm:flex  sm:h-[350px] sm:w-[55%] sm:m-auto sm:my-7 lg:my-7  ' >
+                     <div key={item.id} className=' flex flex-col  h-[650px] w-[80%]  my-7  m-auto border-2 border-gray-800 dark:bg-gray-300 text-black  sm:flex sm:flex-row  sm:h-[350px] sm:w-[55%] sm:m-auto sm:my-7 lg:my-7  ' >
                   <div className='border-2 h-[300px] w-[90%]  sm:h-[95%] sm:w-[300px] mt-2 ml-2 border-gray-500 dark:bg-white '>
-                     <img className='h-[100%] w-[220px] m-auto ' src={item.image}></img>
+                     <img className='h-[100%] w-[220px] ' src={item.image}></img>
                   </div>
                   <div className=' w-[50%]  ml-3  flex flex-col gap-2  '>
                        <h1 className='font-bold mt-9'>{item.name}</h1>

@@ -53,11 +53,12 @@ const MensWear = () => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-5   ">
+    <div>
+      <div className=" flex justify-center sm:justify-start flex-wrap gap-5   ">
         {newitemm.map((item) => {
           return (
             <NavLink key={item.id} to={`/product/${item.id}`}>
-              <div className="border-2 flex flex-col gap-3 border-gray-500 w-[230px] mt-5 mb-5 ml-5 pl-3 pt-3 lb-3 pr-3  hover:bg-gray-100 dark:bg-gray-200 text-black ">
+              <div className="  border-2 flex flex-col gap-3 border-gray-500 w-[230px] mt-5 mb-5 ml-5 pl-3 pt-3 lb-3 pr-3  hover:bg-gray-100 dark:bg-gray-200 text-black ">
                 <div className="h-[230px] w-[205px] border-2 border-gray-400 bg-white ">
                   <img
                     className="h-[227px] w-auto m-auto"
@@ -78,7 +79,7 @@ const MensWear = () => {
                     <div
                       onClick={() => addWishlist(item.id)}
                       className="h-[30px] w-[30px] bg-black text-white border-2 border-gray-400 pt-1 pl-1"
-                    >
+                      >
                       {/* <FaRegHeart className={item.infav ? "bg-red-500" : ""} /> */}
 
                       {item.infav ? (
@@ -99,6 +100,8 @@ const MensWear = () => {
           );
         })}
       </div>
+        </div>
+
     </>
   );
 };

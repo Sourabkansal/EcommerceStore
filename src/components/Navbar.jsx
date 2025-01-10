@@ -27,10 +27,10 @@ const Navbar = () => {
                         <IoSearchSharp className='text-gray-500 group:hover:text-primary absolute top-1/2 -translate-y-1/2 right-3  '/>
                      </div>
                    {/* order button  */}
-                   <NavLink to={"/addcart"}> 
 
+                   <NavLink to={"/addcart"}> 
                    <button  
-                   className='bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group  '> 
+                   className='bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-1  sm:gap-3 group  '> 
                     <span className='group-hover:block hidden transition-all duration-200'
                     >Order</span>
                     <FaCartShopping className='text-xl text-white drop-shadow-sm cursor-pointer'/>
@@ -39,12 +39,13 @@ const Navbar = () => {
 
                    <NavLink to={"/wishlist"} >
                    <button 
-                   className='bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group  '> 
+                   className='bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-1 sm:gap-3 group  '> 
                     <span className='group-hover:block hidden transition-all duration-200'
                     >Wishlist</span>
                     <FaHeart className='text-xl text-white drop-shadow-sm cursor-pointer'/>
                    </button>
                     </NavLink>
+
                    {/* dark switch */}
                    <Darkmode/>
                    <div>
