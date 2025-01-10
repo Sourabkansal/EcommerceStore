@@ -39,7 +39,6 @@ setData(unmatched)
 localStorage.setItem('Cart' , JSON.stringify(unmatched));
 }
   
-
   let clearCart = ()=>{
     setData([]);
     localStorage.removeItem("Cart");
