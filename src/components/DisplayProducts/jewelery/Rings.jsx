@@ -30,7 +30,7 @@ const Rings = () => {
 
      console.log(rings)
    console.log(" hello")
-     return  <div className='flex flex-wrap gap-5'>
+     return  <div className=" flex justify-center sm:justify-start flex-wrap gap-5  ">
          {
            rings.map((item)=>{
              return  <NavLink key={item.id}  to={`/product/${item.id}`}>

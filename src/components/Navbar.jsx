@@ -16,7 +16,7 @@ const Navbar = () => {
                 <div>
                      <a href='#' className='font-bold  text-2xl sm:text-3xl flex gap-2 '>
                          <img src='https://shopsy-tcj.netlify.app/assets/logo-Jm4BVSCI.png' alt="logo" className='w-10 '></img>
-                         ShopFlick
+                         Shopz
                      </a>
                 </div>
                   {/* search bar  */}

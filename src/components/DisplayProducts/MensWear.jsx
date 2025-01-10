@@ -54,7 +54,7 @@ const MensWear = () => {
   return (
     <>
     <div>
-      <div className=" flex justify-center sm:justify-start flex-wrap gap-5   ">
+      <div className=" flex justify-center sm:justify-start flex-wrap gap-5  ">
         {newitemm.map((item) => {
           return (
             <NavLink key={item.id} to={`/product/${item.id}`}>

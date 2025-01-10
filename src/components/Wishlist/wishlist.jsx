@@ -26,7 +26,7 @@ const wishlist = () => {
     console.log(wishlistt)
 
   return (
-    <div className='flex flex-wrap'>
+    <div className=" flex justify-center sm:justify-start flex-wrap gap-5  ">
     {
       wishlistt.map((item)=>{
            return <NavLink key={item.id}  to={`/product/${item.id}`}>
