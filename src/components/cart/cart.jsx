@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { CartContext } from "../contextStore/Cartcontext";
 import { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
+import js from "@eslint/js";
 
 
 const cart = () => {
@@ -14,7 +15,11 @@ const cart = () => {
   
   // console.log(data)
 
+   let addquan = (idd)=>{
+        
+   }
   
+
   useEffect(()=>{
     let data2 = localStorage.getItem('Cart')
     if(data2){
@@ -24,23 +29,19 @@ const cart = () => {
         return total + curr.price * curr.quantity
       },0))
     }
-
-
   },[])
+
+  let delcartitem=(idd)=>{
+    let unmatched = data.filter((item)=>{
+    return item.id!=idd
+});
+setData(unmatched)
+localStorage.setItem('Cart' , JSON.stringify(unmatched));
+}
   
-  // useEffect (()=>{
-  //    setsubtotal( data.reduce((total , curr )=>{
-  //          return total + curr.price * curr.quantity
-  //    },0))
-  // }, [])
- 
-  console.log(subtotal)
 
   let clearCart = ()=>{
     setData([]);
-
-    // localStorage.setItem('Cart',[])
-    // localStorage.clear('cart');
     localStorage.removeItem("Cart");
     setsubtotal(0)
   }
@@ -62,7 +63,7 @@ const cart = () => {
           {
               data.map((item)=>{
                  return <div key={item.id} className="bg-white w-[95%] sm:h-[125px] m-auto px-3 dark:text-black  ">
-            <div className="flex sm:justify-evenly sm:items-center sm:flex flex-col sm:flex-row ">
+            <div className="flex sm:justify-evenly sm:items-center sm:flex flex-col sm:flex-row gap-[5px] ">
               <div>
                 <img
                   className="h-[118px] w-[90px] m-auto "
@@ -70,7 +71,7 @@ const cart = () => {
                   ></img>
               </div>
               <div className="flex-col m-auto w-[200px] ">
-                <div>
+                <div> 
                   <h1 className="text-xl font-bold">{item.name}</h1>
                 </div>
                 <div className="font-semibold text-center">
@@ -86,7 +87,7 @@ const cart = () => {
                   <span className="h-[32px]  px-2 bg-slate-100 text-2xl">
                     {item.quantity}
                   </span>
-                  <button className="h-[32px] w-[25px] bg-gray-200 text-2xl rounded-r-xl font-bold ">
+                  <button onClick={()=>addquan(item.id)} className="h-[32px] w-[25px] bg-gray-200 text-2xl rounded-r-xl font-bold ">
                     +
                   </button>
                 </div>
@@ -96,7 +97,7 @@ const cart = () => {
                 <span className="font-semibold ">{(item.price *item.quantity).toFixed(2)}</span>
               </div>
               <div className="m-auto">
-                <button className="bg-blue-600 text-white h-[30px] w-[30px] text-[23px] px-1 mx-2 rounded-md">
+                <button onClick={()=>delcartitem(item.id)} className="bg-blue-600 text-white h-[30px] w-[30px] text-[23px] px-1 mx-2 rounded-md">
                   <MdDelete />
                 </button>
                 <NavLink to={`/product/${item.id}`}>
