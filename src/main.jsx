@@ -12,6 +12,7 @@ import Nacklase from "./components/DisplayProducts/jewelery/nacklase.jsx";
 import Rings from "./components/DisplayProducts/jewelery/Rings.jsx";
 import ProducPage from "./components/ProducPage/producPage.jsx";
 import Wishlist from "./components/Wishlist/wishlist.jsx";
+import TopsellingProducts from "./components/TopSellingProducts/TopsellingProducts.jsx";
 import Cart from "./components/cart/cart.jsx";
 import { SearchProvider } from "./components/contextStore/search";
 
@@ -39,6 +40,7 @@ let routerr = createBrowserRouter(
       <Route path="/product/:id" element={<ProducPage />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/addcart" element={<Cart/>}/>
+      <Route path="/topselling/:type" element={<TopsellingProducts/>} />
     </Route>
   )
 );

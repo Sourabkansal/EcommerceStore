@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import Slider from 'react-slick'
 
 const ImageList = [
@@ -6,22 +7,22 @@ const ImageList = [
         id :1 ,
         img :'https://shopsy-tcj.netlify.app/assets/women-NhG2D3pl.png',
         title : "Upto 50% off on all Womens's Wear ",
-        discription :  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sunt commodi incidunt !"
-         
+        discription :  "Upgrade your wardrobe with our exclusive sale! Enjoy up to 50% off on all Women’s Wear. Shop trendy dresses, chic tops, and more – limited time only. Don’t miss out!",
+        route:"/WomensWear"  
    },
    {
     id :2 ,
     img :'https://shopsy-tcj.netlify.app/assets/shopping-vpNvhQDE.png',
     title : "Upto 30% off on all Mens's Wear ",
-    discription :  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sunt commodi incidunt !"
-     
+    discription :  "Revamp your style with our exclusive sale! Enjoy up to 30% off on all Men’s Wear. Shop dapper shirts, cool jackets, and more – limited time only. Don’t miss out!",
+    route:"/mensWear" 
 },
 {
     id :3,
     img :'https://shopsy-tcj.netlify.app/assets/sale-cnpHUeHf.png',
-    title : "Upto 70% off on all Product sale ",
-    discription :  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sunt commodi incidunt !"
-     
+    title : "Upto 70% off on all Electronics sale ",
+    discription : "Upgrade your tech game with our massive sale! Enjoy up to 70% off on Electronics. Shop the latest gadgets, accessories, and more – limited time only. Grab the deals before they're gone!",
+     route:"/Electronics"
 },
 ]
 
@@ -55,6 +56,7 @@ const hero = () => {
           {
              ImageList.map((item)=>{
                    return <div>
+                    <NavLink to={item.route}>
                    <div className='grid grid-cols-1 sm:grid-cols-2' >
                        {/* text content section */}
                        <div className='flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10 '>
@@ -73,7 +75,9 @@ const hero = () => {
                             </div>
                        </div>
                    </div>
+                   </NavLink>
                </div>
+               
             })
           }
 

@@ -1,22 +1,25 @@
 import React from 'react'
 import {FaStar} from "react-icons/fa6"
+import { NavLink } from 'react-router-dom'
 
 const ProductData = [ 
      {
         id : 1 ,
         img : "https://shopsy-tcj.netlify.app/assets/women-NhG2D3pl.png",
-       title : "Women Ethnic ",
+       title : "Women Ethnic",
        rating : "5 ",
        color : "red ",
        aosDelay : "0",
+       route:"/topselling/WomenEthnic"
      },
      {
         id : 2 ,
-        img : "https://shopsy-tcj.netlify.app/assets/women2-wroTMLvf.jpg",
-       title : "Women western",
+       img : "https://img.freepik.com/free-photo/smiling-young-handsome-guy-wearing-black-t-shirt-holding-bag-shoulder-isolated-orange-wall_141793-91491.jpg?ga=GA1.1.2066432878.1696925075&semt=ais_hybrid",
+       title : "Men's Uppers",
        rating : "4.5",
-       color : "white",
-       aosDelay : "200",
+       color : "Pink",
+       aosDelay : "800",
+       route:"/topselling/upper"
      },
      {
         id : 3 ,
@@ -25,22 +28,25 @@ const ProductData = [
        rating : "4.7",
        color : "brown",
        aosDelay : "400",
+       route:"/topselling/Goggles"
      },
      {
         id : 4 ,
-        img : "https://shopsy-tcj.netlify.app/assets/women4-zXERyOhD.jpg",
-       title : "Printed T-Shirt",
+        img : "https://img.freepik.com/premium-photo/guy-holds-shows-empty-eco-bag-yellow-background-smiles-no-plastic_164411-2043.jpg?ga=GA1.1.2066432878.1696925075&semt=ais_hybrid",
+       title : "Men's Bottom wear",
        rating : "4.4",
        color : "yellow ",
        aosDelay : "600",
+       route:"/topselling/bottom"
      },
      {
         id : 5 ,
         img : "https://shopsy-tcj.netlify.app/assets/women2-wroTMLvf.jpg",
-       title : "Fashin T-Shirt",
-       rating : "4.5",
-       color : "Pink",
-       aosDelay : "800",
+        title : "Women western",
+        rating : "4.5",
+        color : "white",
+        aosDelay : "200",
+        route:"/topselling/Womenwestern"
      },
 ]
 
@@ -52,7 +58,7 @@ const product = () => {
          <div className='text-center  mb-10 max-w-[600px] mx-auto  '> 
                <p className='text-lg text-primary '> Top Selling Products for you</p>
                <h1 className='text-3xl font-bold '>Products</h1>
-               <p className='text-xs text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae illum praesentium, ut cum doloribus in deleniti sed natus voluptates dolorum sapiente, fuga odit accusamus placeat?</p>
+               <p className='text-xs text-gray-400'>"Discover Our Top-Selling Products! Shop the most popular picks loved by our customers. Don’t miss out on these favorites – grab them before they’re gone!"</p>
            </div>
      
         {/* bidy section  */}
@@ -61,7 +67,8 @@ const product = () => {
                        {/* cards section */}
                            {
                               ProductData.map((item)=>{
-                                 return <div key={item.id} className='space-y-3 ' >
+                                 return <NavLink to={item.route}>
+                                 <div key={item.id} className='space-y-3 ' >
                                      <img src={item.img} alt='' className=' h-[340px] w-[250px] sm:h-[240px] sm:w-[170px] object-cover rounded-md ' ></img>
                                         <div>
                                              <h3 className='font-semibold'>{item.title}</h3>
@@ -72,6 +79,7 @@ const product = () => {
                                              </div>
                                         </div>
                                      </div>
+                                 </NavLink>
                               })
                            }
                     </div>
