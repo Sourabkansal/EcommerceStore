@@ -62,7 +62,7 @@ const product = () => {
                            {
                               ProductData.map((item)=>{
                                  return <div key={item.id} className='space-y-3 ' >
-                                     <img src={item.img} alt='' className='h-[240px] w-[170px] object-cover rounded-md ' ></img>
+                                     <img src={item.img} alt='' className=' h-[340px] w-[250px] sm:h-[240px] sm:w-[170px] object-cover rounded-md ' ></img>
                                         <div>
                                              <h3 className='font-semibold'>{item.title}</h3>
                                              <p className='text-sm text-gray-600'>{item.color}</p>
