@@ -7,6 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { wishlistContext } from "../contextStore/WishlistContext";
 const TopsellingProducts = () => {
+   const { wishlistt, setwishlistt } = useContext(wishlistContext);
  
     const {product , setproduct}=useContext(productContext);
     console.log(product);
@@ -17,12 +18,43 @@ const TopsellingProducts = () => {
           return item.type == parm.type ;
     })
 
-    console.log(filterdProduct)
+    
+    let addWishlist = (idd) => {
+        let WishMatched = filterdProduct.filter((item) => {
+          return item.id == idd;
+        });
+        let mathced = wishlistt.filter((item) => {
+          return item.id == idd;
+        });
+        let unmatch = wishlistt.filter((item)=>{
+          return item.id != idd;
+        })
+        if(!(mathced.length > 0)){
+          localStorage.setItem("wishlist", JSON.stringify([...wishlistt , ...WishMatched]))
+             setwishlistt([...wishlistt, ...WishMatched])
+        } else {
+          localStorage.setItem("wishlist" , JSON.stringify(unmatch))
+          setwishlistt(unmatch)
+        }
+        // let newarr = [...wishlistt, ...WishMatched];
+        // localStorage.setItem("wishlist", JSON.stringify(newarr));
+      };
+    
+      let newitemm = filterdProduct.map((item) => {
+        let newitem = { ...item, infav: false };
+        wishlistt.map((item2) => {
+          if (item.id == item2.id) {
+            newitem = { ...item, infav: true };
+          }
+        });
+        return newitem;
+      });
+    
 
   return (
     <div>
     <div className=" flex justify-center sm:justify-start flex-wrap gap-5  ">
-      {filterdProduct.map((item) => {
+      {newitemm.map((item) => {
         return (
           <NavLink key={item.id} to={`/product/${item.id}`}>
             <div className="  border-2 flex flex-col gap-3 border-gray-500 w-[230px] mt-5 mb-5 ml-5 pl-3 pt-3 lb-3 pr-3  hover:bg-gray-100 dark:bg-gray-200 text-black ">
@@ -42,7 +74,7 @@ const TopsellingProducts = () => {
                 </div>
               </div>
               <div className="flex mb-3">
-                <NavLink to={"/mensWear"}>
+                <NavLink to={`/topselling/${item.type}`}>
                   <div
                     onClick={() => addWishlist(item.id)}
                     className="h-[30px] w-[30px] bg-black text-white border-2 border-gray-400 pt-1 pl-1"
