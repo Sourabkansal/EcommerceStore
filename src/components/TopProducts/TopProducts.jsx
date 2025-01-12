@@ -1,21 +1,22 @@
 import React from 'react'
 import {FaStar} from "react-icons/fa6"
+import { NavLink } from 'react-router-dom'
 
 const ProductDataa = [
     {
-       id:1,
+       id:34,
        img : "https://shopsy-tcj.netlify.app/assets/shirt-cwf9SKdB.png",
        title : "Casual Wear",
        description : " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, error. hello ian isadnkk iksdkjfd  "
     },
     {
-        id:2,
+        id:35,
         img : "https://shopsy-tcj.netlify.app/assets/shirt2-XQzG6elp.png",
         title : "Printed shirt",
         description : " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, error. hello ian isadnkk iksdkjfd  "
      },
      {
-        id:3,
+        id:36,
         img : "https://shopsy-tcj.netlify.app/assets/shirt3-HwQ10bVo.png",
         title : "Women shirt",
         description : " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, error. hello ian isadnkk iksdkjfd  "
@@ -38,7 +39,8 @@ const TopProducts = () => {
                  <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center'>
                        {
                           ProductDataa.map((item)=>{
-                             return <div className=' rounded-2xl bg-white dark:bg-gray-800 hover:bg-black/80 dark:hover:bg-primary hover:text-white relative shadow-xl duration-300 group max-w-[300px] '>
+                             return  <NavLink key={item.id} to={`/product/${item.id}`}>
+                              <div className=' rounded-2xl bg-white dark:bg-gray-800 hover:bg-black/80 dark:hover:bg-primary hover:text-white relative shadow-xl duration-300 group max-w-[300px] '>
                                  {/* img sec  */}
                                   <div className='h-[100px]'>
                                        <img src={item.img} alt='' className='max-w-[140px] block mx-auto transform -translate-y-20 group-hover:scale-105 duration-300 drop-shadow-md' ></img>
@@ -59,6 +61,7 @@ const TopProducts = () => {
                                      
                                  </div>
                              </div> 
+                            </NavLink>
 
                           })
                        }

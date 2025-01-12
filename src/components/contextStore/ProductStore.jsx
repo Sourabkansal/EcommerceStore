@@ -361,6 +361,39 @@ export const ProductContextProvider = ({children})=>{
                     "price": 199.99,
                     "description": "A vintage-inspired ruby cocktail ring featuring intricate detailing, perfect for a statement piece at any special occasion."
                   },
+                  {
+                    "id": 34,
+                    "name": "Casual Wear",
+                    "main_category": "Men's Wear",
+                    "subcategory": "T-Shirts",
+                    "type":"upper",
+                    "image": "https://shopsy-tcj.netlify.app/assets/shirt-cwf9SKdB.png",
+                    "rating": 4.3,
+                    "price": 24.99,
+                    "description": "A comfortable cotton polo shirt, available in multiple colors. A versatile piece for both casual and semi-casual outfits."
+                  },
+                  {
+                    "id": 35,
+                    "name": "Printed shirt",
+                    "main_category": "Men's Wear",
+                    "subcategory": "T-Shirts",
+                    "type":"upper",
+                    "image": "https://shopsy-tcj.netlify.app/assets/shirt2-XQzG6elp.png",
+                    "rating": 4.3,
+                    "price": 54.99,
+                    "description": "A comfortable cotton polo shirt, available in multiple colors. A versatile piece for both casual and semi-casual outfits."
+                  },
+                  {
+                    "id": 36,
+                    "name": "Women shirt",
+                    "main_category": "Men's Wear",
+                    "subcategory": "T-Shirts",
+                    "type":"upper",
+                    "image": "https://shopsy-tcj.netlify.app/assets/shirt3-HwQ10bVo.png",
+                    "rating": 4.3,
+                    "price": 32.99,
+                    "description": "A comfortable cotton polo shirt, available in multiple colors. A versatile piece for both casual and semi-casual outfits."
+                  },
 
               ]
               
