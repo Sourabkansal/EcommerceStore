@@ -54,12 +54,12 @@ const MensWear = () => {
   return (
     <>
     <div>
-      <div className=" flex justify-center sm:justify-start flex-wrap gap-5  ">
+      <div className=" flex justify-center  flex-wrap gap-5   ">
         {newitemm.map((item) => {
           return (
             <NavLink key={item.id} to={`/product/${item.id}`}>
-              <div className="  border-2 flex flex-col gap-3 border-gray-500 h-[400px] w-[300px] sm:h-auto  sm:w-[230px] mt-5 mb-5 ml-5 pl-3 pt-3 lb-3 pr-3  hover:bg-gray-100 dark:bg-gray-200 text-black ">
-                <div className=" h-[255px] w-[265px] sm:h-[230px] sm:w-[205px] border-2 border-gray-400 bg-white ">
+              <div className="  border-2 flex flex-col gap-3 border-gray-500 h-[400px] w-[300px] sm:h-auto  sm:w-[230px]  my-5  pl-3 pt-3 lb-3 pr-3  hover:bg-gray-100 dark:bg-gray-200 text-black ">
+                <div className=" h-[255px] w-[265px] sm:h-[230px] sm:w-[205px] border-2 border-gray-400 bg-white m-auto ">
                   <img
                     className="h-[227px] w-auto m-auto"
                     src={item.image}
