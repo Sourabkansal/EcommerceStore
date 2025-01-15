@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import  {NavLink, useParams } from 'react-router-dom'
 import { productContext } from '../contextStore/ProductStore';
 import {FaStar} from "react-icons/fa6"
+import { ImStarEmpty } from "react-icons/im";
+
 import { CartContext } from '../contextStore/Cartcontext';
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -51,7 +53,18 @@ function producPage() {
     setData([...unmatched, { ...itemm ,  quantity: quantityy }])
   }
  }
+  let arr = []
+ let rating =(rat)=>{
+  for(let i = 0 ; i<=4 ; i++){
+    if(i<rat){
+        arr[i]=1;
+    }
+    else{
+      arr[i]=0;
+    }
 
+}
+ }
 
 
 console.log(singleProduct)
@@ -67,7 +80,22 @@ console.log(singleProduct)
                   <div className=' w-[50%]  ml-3  flex flex-col gap-2  '>
                        <h1 className='font-bold mt-9'>{item.name}</h1>
                        <p className='text-gray-600 font-semibold'>{item.subcategory}</p>
-                      <span className='text-yellow-400 flex' > <FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></span>
+                      <span className='text-yellow-400 flex' >
+                       {
+                        rating(item.rating)
+                       }
+                         {
+                           arr.map((item)=>{
+                              if(item==1){
+                                return <FaStar/>
+                              }
+                              else{
+                                return <ImStarEmpty/>
+                              }
+                           })
+                         }
+                         </span>
+                         
                        <p className='text-gray-600 font-semibold'>{item.main_category}</p>
                        <h1 className='font-bold font-sans'>{`$${item.price}`}</h1>
                        <p className='text-gray-500 text-xs'>Quantity</p>

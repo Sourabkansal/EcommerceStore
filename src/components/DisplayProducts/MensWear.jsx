@@ -5,6 +5,10 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { wishlistContext } from "../contextStore/WishlistContext";
+import { FaRegStar } from "react-icons/fa6";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import {FaStar} from "react-icons/fa6"
+
 const MensWear = () => {
   const { wishlistt, setwishlistt } = useContext(wishlistContext);
 
@@ -24,15 +28,18 @@ const MensWear = () => {
     let mathced = wishlistt.filter((item) => {
       return item.id == idd;
     });
-    let unmatch = wishlistt.filter((item)=>{
+    let unmatch = wishlistt.filter((item) => {
       return item.id != idd;
-    })
-    if(!(mathced.length > 0)){
-      localStorage.setItem("wishlist", JSON.stringify([...wishlistt , ...WishMatched]))
-         setwishlistt([...wishlistt, ...WishMatched])
+    });
+    if (!(mathced.length > 0)) {
+      localStorage.setItem(
+        "wishlist",
+        JSON.stringify([...wishlistt, ...WishMatched])
+      );
+      setwishlistt([...wishlistt, ...WishMatched]);
     } else {
-      localStorage.setItem("wishlist" , JSON.stringify(unmatch))
-      setwishlistt(unmatch)
+      localStorage.setItem("wishlist", JSON.stringify(unmatch));
+      setwishlistt(unmatch);
     }
     // let newarr = [...wishlistt, ...WishMatched];
     // localStorage.setItem("wishlist", JSON.stringify(newarr));
@@ -51,58 +58,100 @@ const MensWear = () => {
   console.log(newitemm);
   console.log(wishlistt);
 
+  let arr = []
+  let rating =(rat)=>{
+   for(let i = 0 ; i<=4 ; i++){
+     if(i<rat){
+         arr[i]=1;
+     }
+     else{
+       arr[i]=0;
+     }
+ 
+ }
+  }
+
   return (
-    <>
-    <div>
-      <div className=" flex justify-center  flex-wrap sm:gap-8   ">
-        {newitemm.map((item) => {
-          return (
-            <NavLink key={item.id} to={`/product/${item.id}`}>
-              <div className="  border-2 flex flex-col gap-3 shadow-xl  border-gray-500 h-[400px] w-[300px] sm:h-auto  sm:w-[230px]  my-5  pl-3 pt-3 lb-3 pr-3  hover:bg-gray-100 dark:bg-gray-200 text-black ">
-                <div className=" h-[255px] w-[265px] sm:h-[230px] sm:w-[205px] border-2 border-gray-400 bg-white m-auto ">
-                  <img
-                    className="h-[100%] w-auto m-auto"
-                    src={item.image}
-                  ></img>
-                </div>
-                <div className="flex justify-between">
-                  <div className=" whitespace-nowrap overflow-hidden text-ellipsis w-[70%] ">
-                    <h1 className=" font-semibold ">{item.subcategory}</h1>
-                    <p className="text-sm text-gray-700">{item.name}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold font-sans">{`$ ${item.price}`}</p>
-                  </div>
-                </div>
-                <div className="flex mb-3">
-                  <NavLink to={"/mensWear"}>
-                    <div
-                      onClick={() => addWishlist(item.id)}
-                      className="h-[30px] w-[30px] bg-black text-white border-2 border-gray-400 pt-1 pl-1"
-                      >
-                      {/* <FaRegHeart className={item.infav ? "bg-red-500" : ""} /> */}
-
-                      {item.infav ? (
-                        <FaHeart className="text-[#FF3131] text-[18px]" />
-                      ) : (
-                        <FaRegHeart className="text-[18px]" />
-                      )}
+    
+      <div >
+        <div className="  flex flex-col gap-6  items-center sm:flex-row justify-center my-10  flex-wrap sm:gap-8   ">
+          {newitemm.map((item) => {
+            return (
+              <NavLink key={item.id} to={`/product/${item.id}`}>
+                <div >
+                  <div className=" bg-white  flex flex-col justify-center items-center p-4 w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200 ">
+                    <div className="text-xs flex justify-end w-48 font-semibold text-gray-400">
+                      id:{item.id}
                     </div>
-                  </NavLink>
-                  <div className="w-[88%] ml-2">
-                    <button className="border-2 border-black h-[30px] w-[100%] bg-white font-semibold text-xs">
-                      Add to cart
-                    </button>
+
+                    <div className="relative">
+                      <img
+                        src={item.image}
+                        alt=""
+                        className=" h-44 w-36"
+                      />
+                        <NavLink to={"/mensWear"}>
+                      <div onClick={() => addWishlist(item.id)} className="p-[7px] bg-gray-800 h-8 w-8 rounded-full text-white absolute top-4 right-[-30px]">
+                         {/* <FaRegHeart className={item.infav ? "bg-red-500" : ""} /> */}
+                         {item.infav ? (
+                           <FaHeart className="text-[#FF3131] text-[18px]" />
+                          ) : (
+                            <FaRegHeart className="text-[18px]" />
+                          )}
+                      </div>
+                          </NavLink>
+                    </div>
+
+                    <div className="flex flex-col justify-start w-44 mt-3">
+                      <div className="">
+                        {" "}
+                        <h1 className="font-bold">{item.subcategory}</h1>
+                      </div>
+
+                      <div className="flex text-sm justify-start items-center">
+                        {
+                                                rating(item.rating)
+                                               }
+                                                 {
+                                                   arr.map((item)=>{
+                                                      if(item==1){
+                                                        return <FaStar/>
+                                                      }
+                                                      else{
+                                                        return <FaRegStar />
+                                                      }
+                                                   })
+                                                 }
+                        {/* <FaRegStar />
+                        <FaRegStar />
+                        <FaRegStar />
+                        <FaRegStar />
+                        <FaRegStar /> */}
+                        <span className="px-1 font-semibold">{item.rating}</span>
+                      </div>
+                    </div>
+                    {/* div in div */}
+                    <div className="flex justify-between w-44 mt-6">
+                      <div className="">
+                        <div className=" text-xs ">
+                          <span className="line-through font-semibold ">{`$ ${(item.price + ( item.price * (10/100) )).toFixed(2) }`}</span>
+                          <span className="no-underline text-xs bg-blue-200 px-1  ml-1 rounded-sm">
+                            -10%
+                          </span>
+                        </div>
+                        <div className="font-bold">{`$ ${item.price}`}</div>
+                      </div>
+                      <div className="flex justify-center items-center text-2xl bg-blue-700 w-10 h-10 text-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-200 ">
+                        <MdOutlineShoppingCart />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </NavLink>
-          );
-        })}
-      </div>
+              </NavLink>
+            );
+          })}
         </div>
-
-    </>
+      </div>
   );
 };
 
