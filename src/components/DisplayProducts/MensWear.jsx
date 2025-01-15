@@ -79,8 +79,8 @@ const MensWear = () => {
             return (
               <NavLink key={item.id} to={`/product/${item.id}`}>
                 <div >
-                  <div className=" bg-white  flex flex-col justify-center items-center p-4 w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200 ">
-                    <div className="text-xs flex justify-end w-48 font-semibold text-gray-400">
+                  <div className=" bg-white  flex flex-col justify-center items-center p-4 w-60 sm:w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200 ">
+                    <div className="text-xs flex justify-end w-56 sm:w-48 font-semibold text-gray-400">
                       id:{item.id}
                     </div>
 
@@ -88,10 +88,10 @@ const MensWear = () => {
                       <img
                         src={item.image}
                         alt=""
-                        className=" h-44 w-36"
+                        className=" h-44 w-40 sm:w-36"
                       />
                         <NavLink to={"/mensWear"}>
-                      <div onClick={() => addWishlist(item.id)} className="p-[7px] bg-gray-800 h-8 w-8 rounded-full text-white absolute top-4 right-[-30px]">
+                      <div onClick={() => addWishlist(item.id)} className="p-[7px] bg-gray-800 h-8 w-8 rounded-full text-white absolute top-4 right-[-35px] sm:right-[-30px]">
                          {/* <FaRegHeart className={item.infav ? "bg-red-500" : ""} /> */}
                          {item.infav ? (
                            <FaHeart className="text-[#FF3131] text-[18px]" />
@@ -102,7 +102,7 @@ const MensWear = () => {
                           </NavLink>
                     </div>
 
-                    <div className="flex flex-col justify-start w-44 mt-3">
+                    <div className="flex flex-col justify-start  w-48 sm:w-44 mt-3">
                       <div className="">
                         {" "}
                         <h1 className="font-bold">{item.subcategory}</h1>
@@ -131,7 +131,7 @@ const MensWear = () => {
                       </div>
                     </div>
                     {/* div in div */}
-                    <div className="flex justify-between w-44 mt-6">
+                    <div className="flex justify-between w-48 sm:w-44 mt-6">
                       <div className="">
                         <div className=" text-xs ">
                           <span className="line-through font-semibold ">{`$ ${(item.price + ( item.price * (10/100) )).toFixed(2) }`}</span>
