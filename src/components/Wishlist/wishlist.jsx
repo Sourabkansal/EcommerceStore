@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { wishlistContext } from '../contextStore/WishlistContext'
 import { FaRegHeart } from "react-icons/fa";
-
+import { MdOutlineDeleteSweep } from "react-icons/md";
 import { productContext } from '../contextStore/ProductStore'
 import { NavLink } from 'react-router-dom'
 import { MdAutoDelete } from "react-icons/md";
@@ -47,8 +47,7 @@ const wishlist = () => {
     <div className="  flex flex-col gap-6  items-center sm:flex-row justify-center my-10  flex-wrap sm:gap-8   ">
                {wishlistt.map((item) => {
                  return (
-                   <NavLink key={item.id} to={`/product/${item.id}`}>
-                     <div>
+                   <div>
                        <div className=" bg-white  flex flex-col justify-center items-center p-4 w-60 sm:w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200 ">
                          <div className="text-xs flex justify-end w-56 sm:w-48 font-semibold text-gray-400">
                            id:{item.id}
@@ -95,13 +94,18 @@ const wishlist = () => {
                              </div>
                              <div className="font-bold">{`$ ${item.price}`}</div>
                            </div>
-                           <div className="flex justify-center items-center text-2xl bg-blue-700 w-10 h-10 text-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-200 ">
+
+                                 <NavLink key={item.id} to={`/product/${item.id}`}>
+                           <div className="flex justify-center items-center text-2xl bg-blue-700 w-8 h-8 text-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-200 ">
                              <MdOutlineShoppingCart />
+                           </div>
+                           </NavLink>
+                           <div onClick={()=>deletewishlist(item.id)} className="flex justify-center items-center text-2xl bg-red-600 w-8 h-8 text-white rounded-md shadow-md hover:shadow-lg transition-shadow duration-200 ">
+                             <MdOutlineDeleteSweep/>
                            </div>
                          </div>
                        </div>
                      </div>
-                   </NavLink>
                  );
                })}
              </div>
