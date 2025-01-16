@@ -376,7 +376,7 @@ export const ProductContextProvider = ({children})=>{
                     "id": 35,
                     "name": "Printed shirt",
                     "main_category": "Men's Wear",
-                    "subcategory": "T-Shirts",
+                    "subcategory": "Printed Shirts",
                     "type":"upper",
                     "image": "https://shopsy-tcj.netlify.app/assets/shirt2-XQzG6elp.png",
                     "rating": 5,
@@ -385,7 +385,7 @@ export const ProductContextProvider = ({children})=>{
                   },
                   {
                     "id": 36,
-                    "name": "Women shirt",
+                    "name": "Mens shirt",
                     "main_category": "Men's Wear",
                     "subcategory": "T-Shirts",
                     "type":"upper",

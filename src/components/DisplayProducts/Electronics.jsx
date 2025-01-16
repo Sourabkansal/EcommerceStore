@@ -75,7 +75,7 @@ const Electronics = () => {
              return (
                <NavLink key={item.id} to={`/product/${item.id}`}>
                  <div>
-                   <div className=" bg-white  flex flex-col justify-center items-center p-4 w-60 sm:w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200 ">
+                   <div className=" bg-white  flex flex-col justify-center items-center p-4 w-60 sm:w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200  ">
                      <div className="text-xs flex justify-end w-56 sm:w-48 font-semibold text-gray-400">
                        id:{item.id}
                      </div>

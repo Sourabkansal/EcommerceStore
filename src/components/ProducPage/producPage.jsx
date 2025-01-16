@@ -3,9 +3,11 @@ import  {NavLink, useParams } from 'react-router-dom'
 import { productContext } from '../contextStore/ProductStore';
 import {FaStar} from "react-icons/fa6"
 import { ImStarEmpty } from "react-icons/im";
-
+import { FaRegStar } from "react-icons/fa6";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { CartContext } from '../contextStore/Cartcontext';
 import { FaShoppingCart } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa6";
 
 function producPage() {
  let {product , setproduct } = useContext(productContext);
@@ -72,49 +74,92 @@ console.log(singleProduct)
      <>
        {
          singleProduct.map((item)=>{
-              return <div>
-                     <div key={item.id} className=' flex flex-col  h-[650px] w-[80%]  my-7  m-auto border-2 border-gray-800 dark:bg-gray-300 text-black  sm:flex sm:flex-row  sm:h-[350px] sm:w-[55%] sm:m-auto sm:my-7 lg:my-7  ' >
-                  <div className='border-2 ml-4 h-[300px] w-[90%]  sm:h-[95%] sm:w-[300px] mt-2  border-gray-500 dark:bg-white '>
-                     <img className='h-[100%] w-[220px] m-auto' src={item.image}></img>
+              return <div className="">
+              <div className="bg-white flex flex-col justify-center items-center p-4 w-60 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 m-auto my-7 sm:flex-row sm:w-[40%]">
+                
+                {/* First Div:  */}
+                <div className="flex flex-col justify-center items-center w-full ">
+                  <div className="text-xs flex justify-end sm:justify-start w-56 font-semibold text-gray-400">
+                    id: {item.id}
                   </div>
-                  <div className=' w-[50%]  ml-3  flex flex-col gap-2  '>
-                       <h1 className='font-bold mt-9'>{item.name}</h1>
-                       <p className='text-gray-600 font-semibold'>{item.subcategory}</p>
-                      <span className='text-yellow-400 flex' >
-                       {
-                        rating(item.rating)
-                       }
-                         {
-                           arr.map((item)=>{
-                              if(item==1){
-                                return <FaStar/>
-                              }
-                              else{
-                                return <ImStarEmpty/>
-                              }
-                           })
-                         }
-                         </span>
-                         
-                       <p className='text-gray-600 font-semibold'>{item.main_category}</p>
-                       <h1 className='font-bold font-sans'>{`$${item.price}`}</h1>
-                       <p className='text-gray-500 text-xs'>Quantity</p>
-                       <input onChange={quantityCount}  type='number' min={1} defaultValue={1} className='border-2 dark:border-gray-500 w-[90%] h-[30px] ' ></input>
-                       
-                       <div className='flex gap-3'>
-                         <div><button  onClick={()=>addtocart(item)} className='bg-green-600 text-white rounded-sm w-[130px] h-[30px] '>Add to cart </button></div>
-
-                       <NavLink to={"/addcart"}>
-                         <div className='bg-red-600 w-[30px] h-[30px] rounded-sm pt-1 pl-1 text-[20px]'><FaShoppingCart className='text-white' /></div>
-                         </NavLink>   
-                      
-                       </div>
+                  <div className="relative ">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="h-44 w-40 sm:h-[250px]"
+                    />
                   </div>
+                </div>
+                
+                {/* Second Div */}
+                <div className="flex flex-col items-center w-full mt-3 gap-2">
+                 
+                  <div className="flex flex-col justify-start w-48 gap-2">
+                    <h1 className="font-bold">{item.name}</h1>
+                    <h2 className="font-semibold text-gray-600">{item.subcategory}</h2>
+                  </div>
+                  
+               
+                  <div className="flex text-sm justify-start items-center w-48">
+                    {rating(item.rating)}
+                    {arr.map((star) =>
+                      star === 1 ? (
+                        <FaStar key={star} />
+                      ) : (
+                        <FaRegStar key={star} />
+                      )
+                    )}
+                    <span className="px-1 font-semibold">{item.rating}</span>
+                  </div>
+                  
+                 
+                  <div className="w-48 mt-2">
+                    <div className="flex gap-3">
+                      <div className="flex gap-1">
+                        <span className="no-underline flex text-green-700 font-bold">
+                          <FaArrowDown className="mt-1" />10%
+                        </span>
+                        <span className="line-through font-semibold text-gray-500">{`$${(
+                          item.price +
+                          item.price * 0.1
+                        ).toFixed(2)}`}</span>
+                      </div>
+                      <div className="font-bold">{`$${item.price}`}</div>
+                    </div>
+                  </div>
+                  
+                  
+                  <div className="w-48">
+                    <label className="text-gray-500 text-xs">Quantity</label>
+                    <input
+                      onChange={quantityCount}
+                      type="number"
+                      min={1}
+                      defaultValue={1}
+                      className="border border-gray-300 w-full h-10 mt-2 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  
+                  
+                  <div className="flex justify-between w-48 mt-4">
+                    <button
+                      onClick={() => addtocart(item)}
+                      className="bg-green-600 text-white rounded-md px-6 py-2 shadow-md hover:bg-green-700 transition-all duration-200"
+                    >
+                      Add to cart
+                    </button>
+                    <NavLink to="/addcart">
+                      <div className="bg-red-600 w-10 h-10 rounded-md flex justify-center items-center text-white text-xl shadow-md hover:shadow-lg transition-all duration-200">
+                        <FaShoppingCart />
+                      </div>
+                    </NavLink>
+                  </div>
+                </div>
               </div>
-              <div className='ml-6 mb-5'>
-                  <p><span className='font-bold'>Discription :-</span> {item.description}</p>
-              </div>
-              </div>
+              <p>Description:-{item.description}</p>
+            </div>
+            
+            
          })
        }
       </>

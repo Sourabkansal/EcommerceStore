@@ -20,8 +20,6 @@ const TopsellingProducts = () => {
     let filterdProduct = product.filter((item)=>{
           return item.type == parm.type ;
     })
-
-    
     let addWishlist = (idd) => {
         let WishMatched = filterdProduct.filter((item) => {
           return item.id == idd;
