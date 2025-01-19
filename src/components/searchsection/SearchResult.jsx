@@ -1,28 +1,28 @@
-import React from "react";
-import { useContext } from "react";
-import { productContext } from "../contextStore/ProductStore";
-import { FaRegHeart } from "react-icons/fa";
+import React, { useContext } from 'react'
+import { productContext } from '../contextStore/ProductStore'
+import { useParams ,NavLink } from 'react-router-dom'
 import { FaHeart } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
-import { wishlistContext } from "../contextStore/WishlistContext";
+import { FaRegHeart } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { FaStar } from "react-icons/fa6";
+import { wishlistContext } from "../contextStore/WishlistContext";
 
-const MensWear = () => {
-  const { wishlistt, setwishlistt } = useContext(wishlistContext);
 
-  const { product, setproduct } = useContext(productContext);
-  // console.log(product);
-  console.log(wishlistt);
 
-  let mansWera = product.filter((item) => {
-    return item.main_category == "Men's Wear";
-  });
-  console.log(mansWera);
+const output = () => {
+  let text = useParams().text
+    const { wishlistt, setwishlistt } = useContext(wishlistContext);
+  const products = useContext(productContext)
+  const filteredproduct = products.product.filter((item)=>{
+    console.log(item.name.toLowerCase().includes())
+    return item.name.toLowerCase().includes(useParams().text)
+  })
+  console.log(filteredproduct)
 
+  
   let addWishlist = (idd) => {
-    let WishMatched = mansWera.filter((item) => {
+    let WishMatched = filteredproduct.filter((item) => {
       return item.id == idd;
     });
     let mathced = wishlistt.filter((item) => {
@@ -41,11 +41,8 @@ const MensWear = () => {
       localStorage.setItem("wishlist", JSON.stringify(unmatch));
       setwishlistt(unmatch);
     }
-    // let newarr = [...wishlistt, ...WishMatched];
-    // localStorage.setItem("wishlist", JSON.stringify(newarr));
   };
-
-  let newitemm = mansWera.map((item) => {
+  let newitemm = filteredproduct.map((item) => {
     let newitem = { ...item, infav: false };
     wishlistt.map((item2) => {
       if (item.id == item2.id) {
@@ -54,9 +51,6 @@ const MensWear = () => {
     });
     return newitem;
   });
-
-  console.log(newitemm);
-  console.log(wishlistt);
 
   let arr = [];
   let rating = (rat) => {
@@ -68,13 +62,13 @@ const MensWear = () => {
       }
     }
   };
-
   return (
     <div>
       <div className="  flex flex-col gap-6  items-center sm:flex-row justify-center my-10  flex-wrap sm:gap-8   ">
+        {!filteredproduct.length && <h1>No item present ......</h1>}
         {newitemm.map((item) => {
           return (
-            <NavLink key={item.id} to={`/product/${item.id}`}>
+            <NavLink key={Math.random()} to={`/product/${item.id}`}>
               <div>
                 <div className=" bg-white  flex flex-col justify-center items-center p-4 w-60 sm:w-56 border border-gray-300 rounded-lg  shadow-md hover:shadow-xl transition-all duration-200 ">
                   <div className="text-xs flex justify-end w-56 sm:w-48 font-semibold text-gray-400">
@@ -87,11 +81,11 @@ const MensWear = () => {
                       alt=""
                       className=" h-44 w-40 sm:w-36 object-contain"
                     />
-                    <NavLink to={"/mensWear"}>
+                    <NavLink to={`/search/${text}`}>
                       <div
                         onClick={() => addWishlist(item.id)}
                         className="p-[7px] bg-gray-800 h-8 w-8 rounded-full text-white absolute top-4 right-[-35px] sm:right-[-30px]"
-                      >
+                        >
                         {/* <FaRegHeart className={item.infav ? "bg-red-500" : ""} /> */}
                         {item.infav ? (
                           <FaHeart className="text-[#FF3131] text-[18px]" />
@@ -99,7 +93,8 @@ const MensWear = () => {
                           <FaRegHeart className="text-[18px]" />
                         )}
                       </div>
-                    </NavLink>
+                        </NavLink>
+                    
                   </div>
                   <div className="flex flex-col justify-start  w-48 sm:w-44 mt-3">
                     <div className="">
@@ -111,9 +106,9 @@ const MensWear = () => {
                       {rating(item.rating)}
                       {arr.map((item) => {
                         if (item == 1) {
-                          return <FaStar />;
+                          return <FaStar key={Math.random()} />;
                         } else {
-                          return <FaRegStar />;
+                          return <FaRegStar key={Math.random()}/>;
                         }
                       })}
                       
@@ -146,6 +141,6 @@ const MensWear = () => {
       </div>
     </div>
   );
-};
+}
 
-export default MensWear;
+export default output

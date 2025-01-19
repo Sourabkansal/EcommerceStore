@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import Darkmode from "./Darkmode";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
 const Navbar = () => {
+  const[searchWord , setSearchWord]=useState("")
+  const navigate = useNavigate()
+  function enterr(e){
+       console.log(e.key)
+       if(e.key == "Enter"&&searchWord){
+        console.log("enter")
+        navigate(`/search/${searchWord}`)
+       }
+  }
   return (
     <div className=" shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40  ">
       {/* upper Navbar */}
@@ -28,9 +37,14 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search"
+                value={searchWord}
+                onChange={(e)=>setSearchWord(e.target.value)}
+                onKeyDown={enterr}
                 className="w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 px-2 py-1 focus:outline-none focus:border-1 focus:border-primary dark:border-gray-500 dark:bg-gray-800 "
               ></input>
+              <NavLink to={`/search/${searchWord}`}>
               <IoSearchSharp className="text-gray-500 group:hover:text-primary absolute top-1/2 -translate-y-1/2 right-3  " />
+              </NavLink>
             </div>
             {/* order button  */}
 

@@ -79,7 +79,7 @@ return (
                     <img
                       src={item.image}
                       alt=""
-                      className=" h-44 w-40 sm:w-36"
+                      className=" h-44 w-40 sm:w-36 object-contain"
                     />
                     <NavLink to={"/WomensWear"}>
                       <div
