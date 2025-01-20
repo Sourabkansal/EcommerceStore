@@ -74,7 +74,7 @@ console.log(singleProduct)
      <>
        {
          singleProduct.map((item)=>{
-              return <div className="">
+              return <div key={Math.random()+Math.random()} className="">
               <div className="bg-white flex flex-col justify-center items-center p-4 w-60 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 m-auto my-7 sm:flex-row sm:w-[40%]">
                 
                 {/* First Div:  */}

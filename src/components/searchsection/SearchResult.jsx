@@ -16,7 +16,7 @@ const output = () => {
   const products = useContext(productContext)
   const filteredproduct = products.product.filter((item)=>{
     console.log(item.name.toLowerCase().includes())
-    return item.name.toLowerCase().includes(useParams().text)
+    return item.name.toLowerCase().includes(useParams().text.toLowerCase())
   })
   console.log(filteredproduct)
 
