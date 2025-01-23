@@ -57,7 +57,7 @@ const wishlist = () => {
                            <img
                              src={item.image}
                              alt=""
-                             className=" h-44 w-40 sm:w-36"
+                             className="object-contain h-44 w-40 sm:w-36"
                            />
                            
                          </div>
