@@ -13,7 +13,31 @@ const cart = () => {
 
   // console.log(data)
 
-  let addquan = (idd) => {};
+  let addquan = (idd) => {
+
+   let newarr = data.map((item)=>{
+          return {...item , quantity: item.quantity + 1  }
+   })
+
+   setData(newarr)
+  localStorage.setItem("Cart" , JSON.stringify(newarr))
+  };
+
+  let Minusquan = (idd) => {
+
+    let newarr = data.map((item)=>{
+    if(item.quantity == 1 ){
+      return {...item , quantity: 1   }
+
+    }
+    else{
+        return {...item , quantity: item.quantity - 1  }
+    }
+    })
+ setData(newarr)
+ localStorage.setItem("Cart" , JSON.stringify(newarr))
+
+    };
 
   useEffect(() => {
     let data2 = localStorage.getItem("Cart");
@@ -26,7 +50,7 @@ const cart = () => {
         }, 0)
       );
     }
-  }, []);
+  }, data);
 
   let delcartitem = (idd) => {
     let unmatched = data.filter((item) => {
@@ -81,8 +105,9 @@ const cart = () => {
                   </div>
                   <div className="flex gap-3 m-auto">
                     <span className="font-semibold">Quantity</span>
+
                     <div>
-                      <button className="h-[32px] w-[25px] bg-gray-200 text-2xl rounded-l-xl font-bold">
+                      <button onClick={()=> Minusquan(item.id)} className="h-[32px] w-[25px] bg-gray-200 text-2xl rounded-l-xl font-bold">
                         -
                       </button>
                       <span className="h-[32px]  px-2 bg-slate-100 text-2xl">
@@ -95,6 +120,7 @@ const cart = () => {
                         +
                       </button>
                     </div>
+
                   </div>
                   <div className="m-auto ">
                     <span className="font-bold mx-2">Total: </span>{" "}
