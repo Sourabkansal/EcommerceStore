@@ -65,7 +65,7 @@ const WomensWear = () => {
 
 return (
     <div>
-      <div className="  flex flex-col gap-6  items-center sm:flex-row justify-center my-10  flex-wrap sm:gap-8   ">
+      <div className="  flex flex-col gap-6  items-center sm:flex-row justify-center my-10  flex-wrap sm:gap-8  dark:text-black ">
         {newitemm.map((item) => {
           return (
             <NavLink key={item.id} to={`/product/${item.id}`}>

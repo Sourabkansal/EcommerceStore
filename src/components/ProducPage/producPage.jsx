@@ -75,7 +75,7 @@ console.log(singleProduct)
        {
          singleProduct.map((item)=>{
               return <div className="">
-              <div className="bg-white flex flex-col justify-center items-center p-4 w-60 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 m-auto my-7 sm:flex-row sm:w-[40%]">
+              <div className="bg-white flex flex-col justify-center items-center p-4 w-60 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 m-auto my-7 sm:flex-row sm:w-[40%] dark:text-black">
                 
                 {/* First Div:  */}
                 <div className="flex flex-col justify-center items-center w-full ">
@@ -156,7 +156,7 @@ console.log(singleProduct)
                   </div>
                 </div>
               </div>
-              <p>Description:-{item.description}</p>
+              <p className='mx-5'>Description:-{item.description}</p>
             </div>
             
             
