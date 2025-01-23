@@ -16,7 +16,11 @@ const cart = () => {
   let addquan = (idd) => {
 
    let newarr = data.map((item)=>{
-          return {...item , quantity: item.quantity + 1  }
+
+     if(item.id == idd){
+            return {...item , quantity: item.quantity + 1  }
+          }
+   return item
    })
 
    setData(newarr)
@@ -30,9 +34,10 @@ const cart = () => {
       return {...item , quantity: 1   }
 
     }
-    else{
+    if ( item.id == idd ){
         return {...item , quantity: item.quantity - 1  }
     }
+    return item
     })
  setData(newarr)
  localStorage.setItem("Cart" , JSON.stringify(newarr))
