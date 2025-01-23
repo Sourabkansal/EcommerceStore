@@ -33,7 +33,7 @@ const Navbar = () => {
           </div>
           {/* search bar  */}
           <div className="flex justify-between items-center gap-4 ">
-            <div className="group relative sm:block">
+            <div className="group hidden relative sm:block">
               <input
                 type="text"
                 placeholder="Search"
