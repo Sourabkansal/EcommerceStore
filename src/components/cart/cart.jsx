@@ -161,9 +161,12 @@ const cart = () => {
           {/* Checkout sec */}
           <div className="bg-white w-[95%] h-[55px] m-auto flex justify-between items-center px-4 ">
             <div>
+             <NavLink to="/payment">
               <button className="bg-red-600 px-2 py-1 text-white font-semibold rounded-md  ">
                 Checkout
               </button>
+             </NavLink>
+            
             </div>
             <div>
               <span className=" text-xs font-bold mx-2 sm:text-xl dark:text-black">

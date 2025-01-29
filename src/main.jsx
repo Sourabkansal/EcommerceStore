@@ -15,6 +15,7 @@ import Wishlist from "./components/Wishlist/wishlist.jsx";
 import SearchResult from "./components/searchsection/SearchResult.jsx"
 import TopsellingProducts from "./components/TopSellingProducts/TopsellingProducts.jsx";
 import Cart from "./components/cart/cart.jsx";
+import Paymentpage from "./components/cart/paymentpage.jsx";
 import { SearchProvider } from "./components/contextStore/search";
 
 import {
@@ -42,6 +43,7 @@ let routerr = createBrowserRouter(
       <Route path="/search/:text" element={<SearchResult />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/addcart" element={<Cart/>}/>
+      <Route path="/payment" element={<Paymentpage/>}/>
       <Route path="/topselling/:type" element={<TopsellingProducts/>} />
     </Route>
   )
