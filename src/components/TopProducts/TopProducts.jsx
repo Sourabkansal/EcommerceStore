@@ -57,7 +57,7 @@ const TopProducts = () => {
                                     <h1  className='text-xl font-bold '
                                      >{item.title}</h1>
                                      <p className='text-gray-500 group-hover:text-white duration-300 text-sm line-clamp-2'>{ item.description}</p>
-                       <button className='mt-4 bg-gradient-to-r from-primary to to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full'>Order Now </button>
+                                     <button className='mt-4 bg-gradient-to-r from-primary to to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full'>Order Now </button>
                                      
                                  </div>
                              </div> 

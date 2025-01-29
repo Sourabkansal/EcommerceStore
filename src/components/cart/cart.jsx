@@ -48,14 +48,20 @@ const cart = () => {
     let data2 = localStorage.getItem("Cart");
     if (data2) {
       setData(JSON.parse(data2));
-      let subdata = JSON.parse(data2);
+      
+    }
+  }, [] );
+
+  useEffect(()=>{
+    if(data){
       setsubtotal(
-        subdata.reduce((total, curr) => {
+        data.reduce((total, curr) => {
           return total + curr.price * curr.quantity;
         }, 0)
       );
     }
-  }, data);
+
+  }, [data])
 
   let delcartitem = (idd) => {
     let unmatched = data.filter((item) => {
